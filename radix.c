@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:20:39 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/06 16:50:03 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 23:36:45 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,6 @@ int	get_max_bits(t_data *data)
 		size /= 2;
 	}
 	return (bit_size);
-}
-
-void	find_idx(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < data->a_len)
-	{
-		j = 0;
-		while (j < data->a_len)
-		{
-			if (data->stack_a[i] == data->sorted[j])
-				data->sorted_inx[i] = j;
-			j++;
-		}
-		i++;
-	}
-	i = -1;
-	while (++i < data->a_len)
-		data->stack_a[i] = data->sorted_inx[i];
 }
 
 void	radix_sub_one(t_data *data, int i)
@@ -97,10 +74,4 @@ void	radix_sort(t_data *data)
 	}
 	while (data->b_len)
 		push_a(data);
-	// i=  0;
-	// while (i < data->a_len)
-	// {
-	// 	printf("data->stack_a[%d] = %d\n", i, data->stack_a[i]);
-	// 	i++;
-	// }
 }
