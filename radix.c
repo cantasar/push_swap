@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:20:39 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/06 15:29:24 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 16:50:03 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,10 @@ void	radix_sort(t_data *data)
 	}
 	while (data->b_len)
 		push_a(data);
-	i=  0;
-	while (i < data->a_len)
-	{
-		printf("data->stack_a[%d] = %d\n", i, data->stack_a[i]);
-		i++;
-	}
+	// i=  0;
+	// while (i < data->a_len)
+	// {
+	// 	printf("data->stack_a[%d] = %d\n", i, data->stack_a[i]);
+	// 	i++;
+	// }
 }

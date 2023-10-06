@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 22:08:27 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/04 20:14:54 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 20:57:57 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 void	sort_2(t_data *data)
 {
 	if (data->stack_a[data->a_len - 1] > data->stack_a[data->a_len - 2])
-		swap_a(data);
+		rotate_a(data);
 }
 
 void	sort_3(t_data *data)
 {
-	sort_2(data);
+	if (data->stack_a[data->a_len - 1] > data->stack_a[data->a_len - 2])
+		swap_a(data);
 	if (data->stack_a[data->a_len - 1] > data->stack_a[data->a_len - 3])
 		reverse_rotate_a(data);
-	sort_2(data);
+	if (data->stack_a[data->a_len - 1] > data->stack_a[data->a_len - 2])
+		swap_a(data);
 	if (data->stack_a[data->a_len - 2] > data->stack_a[data->a_len - 3])
 	{
-		reverse_rotate_a(data);
 		swap_a(data);
+		rotate_a(data);
 	}
 }
 

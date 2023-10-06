@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:15:42 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/06 14:06:09 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 18:54:59 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,14 @@ int	main(int argc, char **argv)
 		sorting(data);
 	else
 		radix_sort(data);
+	// int i = 0;
+	// while (i < data->a_len)
+	// {
+	// 	printf("%d\n", data->stack_a[i]);
+	// 	i++;
+	// }
+	
+	exit_swap(data);
 	// system("leaks push_swap");
 	return (0);
 }
