@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:15:42 by ctasar            #+#    #+#             */
-/*   Updated: 2023/09/20 00:20:08 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 14:06:09 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,18 @@ char	**get_args(int argc, char **argv)
 void	set_stack_a(char **all_args, t_data *data)
 {
 	int	i;
+	int	j;
 
 	i = 0;
+	j = 0;
+	while (all_args[j])
+		j++;
+	j--;
 	while (all_args[i])
 	{
-		data->stack_a[i] = ft_atoi(all_args[i]);
+		data->stack_a[i] = ft_atoi(all_args[j]);
 		i++;
+		j--;
 	}
 }
 
@@ -85,9 +91,8 @@ int	main(int argc, char **argv)
 	index_list(data);
 	if (argc <= 6)
 		sorting(data);
-	// else
-	// 	radix(data);
-
-	//system("leaks push_swap");
+	else
+		radix_sort(data);
+	// system("leaks push_swap");
 	return (0);
 }

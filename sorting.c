@@ -5,107 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 17:47:25 by ctasar            #+#    #+#             */
-/*   Updated: 2023/09/20 00:39:08 by ctasar           ###   ########.fr       */
+/*   Created: 2023/10/02 22:08:27 by ctasar            #+#    #+#             */
+/*   Updated: 2023/10/04 20:14:54 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sorted_stack(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->a_len - 1)
-	{
-		if (data->stack_a[i] > data->stack_a[i + 1])
-			++i;
-		else
-			return (0);
-	}
-	return (1);
-}
-
-void	three_arg(t_data *data)
+void	sort_2(t_data *data)
 {
 	if (data->stack_a[data->a_len - 1] > data->stack_a[data->a_len - 2])
 		swap_a(data);
-	if (data->stack_a[data->a_len - 2]
-		> data->stack_a[data->a_len - 3])
+}
+
+void	sort_3(t_data *data)
+{
+	sort_2(data);
+	if (data->stack_a[data->a_len - 1] > data->stack_a[data->a_len - 3])
+		reverse_rotate_a(data);
+	sort_2(data);
+	if (data->stack_a[data->a_len - 2] > data->stack_a[data->a_len - 3])
+	{
+		reverse_rotate_a(data);
+		swap_a(data);
+	}
+}
+
+void	sort_4(t_data *data, int min)
+{
+	int	i;
+
+	i = find_index(data, min);
+	if (i == data->a_len - 2)
+		rotate_a(data);
+	if (i == data->a_len - 3)
+	{
+		rotate_a(data);
+		rotate_a(data);
+	}
+	if (i == data->a_len - 4)
+		reverse_rotate_a(data);
+	if (!check_sorted_rdx(data))
 	{
 		push_b(data);
-		swap_a(data);
+		sort_3(data);
 		push_a(data);
 	}
-	if (check_sorted_stack(data) == 0)
-		sorting(data);
-	if (data->b_len == 0)
-	{
-		exit_swap(data);
-	}
 }
 
-void	four_arg(t_data *data)
+void	sort_5(t_data *data)
 {
 	int	i;
-	int	first;
-	int	index;
 
-	i = 0;
-	index = finder(data);
-
-	first = 0;
-	if (data->b_len > 0)
-		first = 1;
-	while (i < data->a_len)
+	i = find_index(data, 0);
+	if (i == data->a_len - 2)
+		rotate_a(data);
+	if (i == data->a_len - 3)
 	{
-		if (data->stack_a[data->a_len - 1] == first)
-		{
-			four_sort(data);
-			break ;
-		}
-		i++;
-		if (index <= 2)
-			rotate_a(data);
-		else
-			reverse_rotate_a(data);
+		rotate_a(data);
+		rotate_a(data);
 	}
-	if (data->b_len == 0)
-		exit_swap(data);
-}
-
-void	five_arg(t_data *data)
-{
-	int	i;
-	int	index;
-
-	i = 0;
-	index = find_first(data);
-	while (i < data->a_len)
+	if (i == data->a_len - 4)
 	{
-		if (data->stack_a[data->a_len - 1] == 0)
-		{
-			push_b(data);
-			four_sort(data);
-			push_a(data);
-			break ;
-		}
-		i++;
-		if (index <= 2)
-			rotate_a(data);
-		else
-			reverse_rotate_a(data);
+		reverse_rotate_a(data);
+		reverse_rotate_a(data);
 	}
-	exit_swap(data);
+	if (i == data->a_len - 5)
+		reverse_rotate_a(data);
+	if (!check_sorted_rdx(data))
+	{
+		push_b(data);
+		sort_4(data, 1);
+		push_a(data);
+	}
 }
 
 void	sorting(t_data *data)
 {
+	if (data->a_len == 2)
+		sort_2(data);
 	if (data->a_len == 3)
-		three_arg(data);
+		sort_3(data);
 	if (data->a_len == 4)
-		four_arg(data);
+		sort_4(data, 0);
 	if (data->a_len == 5)
-		five_arg(data);
+		sort_5(data);
 }

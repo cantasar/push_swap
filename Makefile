@@ -1,13 +1,17 @@
 NAME = push_swap
 
-SRCS = push_swap.c \
+SRCS =  push_swap.c \
 		push_swap_utils.c \
 		controls.c \
 		sorted_list.c \
 		sorting.c \
 		sorting_utils.c \
 		swap.c \
-		push.c
+		push.c \
+		r_rotate.c \
+		rotate.c \
+		radix.c
+
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc

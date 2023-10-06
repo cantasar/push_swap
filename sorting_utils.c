@@ -5,43 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 23:21:00 by ctasar            #+#    #+#             */
-/*   Updated: 2023/09/20 00:36:50 by ctasar           ###   ########.fr       */
+/*   Created: 2023/10/04 20:02:23 by ctasar            #+#    #+#             */
+/*   Updated: 2023/10/04 20:04:40 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_first(t_data	*data)
+int	find_index(t_data *data, int index)
 {
 	int	i;
 
-	i = 1;
-	while (i)
+	i = data->a_len - 1;
+	while (i >= 0)
 	{
-		if (data->a_len == 5 && data->b_len == 0)
-		{
-			if (data->stack_a[data->a_len - i] == 0)
-				return (i);
-		}
-		if (data->a_len == 4 && data->b_len == 1)
-		{
-			if (data->stack_a[data->a_len - i] == 1)
-				return (i);
-		}
-		if (data->a_len == 4 && data->b_len == 0)
-		{
-			if (data->stack_a[data->a_len - i] == 0)
-				return (i);
-		}
-		i++;
+		if (data->stack_a[i] == index)
+			break ;
+		i--;
 	}
-	return (0);
-}
-
-void	four_sort(t_data *data)
-{
-	push_b(data);
-	three_sort(data);
-	push_a(data);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:11:22 by ctasar            #+#    #+#             */
-/*   Updated: 2023/09/20 00:34:12 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 14:01:00 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,28 @@ void	exit_swap(t_data	*data);
 //controls
 void	check_nums(int argc, char **argv);
 void	check_sorted(t_data *data);
+int		check_sorted_rdx(t_data *index);
 
-//sorted list
+//sorted stack
 void	sorted_min(t_data *data);
 void	index_list(t_data *data);
 
 //sorting
 void	sorting(t_data *data);
 
+int		find_index(t_data *data, int index);
+
+//radix
+void	radix_sort(t_data *data);
+
 void	push_b(t_data *index);
 void	push_a(t_data *index);
 void	swap_a(t_data	*index);
 void	swap_b(t_data	*index);
 void	swap_ss(t_data	*index);
-
-//sorting utils
-int		find_first(t_data	*data);
-void	four_sort(t_data *data);
+void	rotate_a(t_data	*index);
+void	rotate_b(t_data	*index);
+void	reverse_rotate_a(t_data *index);
+void	reverse_rotate_b(t_data *index);
 
 #endif

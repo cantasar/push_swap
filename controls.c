@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 13:30:43 by ctasar            #+#    #+#             */
-/*   Updated: 2023/09/18 15:01:03 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/06 15:33:01 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,25 @@ void	check_sorted(t_data *data)
 	i = 0;
 	while (i < data->a_len - 1)
 	{
-		if (data->stack_a[i] < data->stack_a[i + 1])
+		if (data->stack_a[i] > data->stack_a[i + 1])
 			i++;
 		else
 			return ;
 	}
-	printf("sorted\n");
 	exit(0);
+}
+
+int	check_sorted_rdx(t_data *index)
+{
+	int	i;
+
+	i = 0;
+	while (i < index->a_len - 1)
+	{
+		if (index->stack_a[i] > index->stack_a[i + 1])
+			++i;
+		else
+			return (0);
+	}
+	return (1);
 }
