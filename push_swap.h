@@ -6,16 +6,16 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:11:22 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/06 14:01:00 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/17 14:51:53 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
-
 # include "Libft/libft.h"
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_data
 {
@@ -45,7 +45,6 @@ void	index_list(t_data *data);
 
 //sorting
 void	sorting(t_data *data);
-
 int		find_index(t_data *data, int index);
 
 //radix

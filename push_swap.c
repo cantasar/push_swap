@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:15:42 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/06 18:54:59 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/17 14:25:27 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,15 @@ int	main(int argc, char **argv)
 	check_nums(argc, argv);
 	all_args = get_args(argc, argv);
 	data = init(all_args);
+	if (data->a_len == 0)
+		error();
 	check_sorted(data);
 	sorted_min(data);
 	index_list(data);
-	if (argc <= 6)
+	if (data->a_len < 6)
 		sorting(data);
 	else
 		radix_sort(data);
-	// int i = 0;
-	// while (i < data->a_len)
-	// {
-	// 	printf("%d\n", data->stack_a[i]);
-	// 	i++;
-	// }
-	
 	exit_swap(data);
-	// system("leaks push_swap");
 	return (0);
 }

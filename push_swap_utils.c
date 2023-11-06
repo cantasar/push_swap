@@ -6,7 +6,7 @@
 /*   By: ctasar <ctasar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/09 14:41:27 by ctasar            #+#    #+#             */
-/*   Updated: 2023/10/06 17:22:24 by ctasar           ###   ########.fr       */
+/*   Updated: 2023/10/17 15:04:46 by ctasar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(void)
 {
-	write(2, "Error\n", 7);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -25,6 +25,12 @@ int	num_control(char *num)
 	i = 0;
 	if (num[0] == '-')
 		i++;
+	if (num[0] == '+')
+		i++;
+	if (num[0] == '+' && !num[1])
+		return (0);
+	if (num[0] == '-' && !num[1])
+		return (0);
 	while (num[i])
 	{
 		if (!ft_isdigit(num[i]))

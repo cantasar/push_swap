@@ -15,7 +15,7 @@ SRCS =  push_swap.c \
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror 
 RM = rm -rf
 
 all: $(NAME)
